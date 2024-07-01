@@ -105,6 +105,8 @@ function resetClasses() {
 }
 
 renderNewQuote();
+textarea.focus();
+
 document.querySelector('.new').addEventListener('click', 
 renderNewQuote);
 document.body.addEventListener('keydown', (e) => {
