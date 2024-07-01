@@ -1,0 +1,142 @@
+:root{
+  --color-of-background: #3a1f38;
+  --color-of-buttons: hsl(304, 30%, 50%);
+  --color-of-hover: hsl(304, 30%, 40%);
+}
+
+body{
+    background-color: var(--color-of-background);
+    font-size: 1.125em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 60vw; 
+  height: 50vh;
+  border-radius: 1em;
+  box-shadow: 0px 0px 2em rgba(61, 61, 61, 0.4);
+  border: 0.125em solid #2c2c2c;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+  padding: 1.125em;
+  color: transparent;
+  resize: none;
+  line-height: 1.3em;
+  font-size: 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  user-select: none;
+}
+.label-container {
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1.125em;
+  scroll-behavior: smooth;
+}
+.label-container::-webkit-scrollbar {
+  width: 6px;
+  background: transparent;
+}
+.label-container::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 50px;
+  border: 1px solid white;
+}
+.label-container::-webkit-scrollbar-button:decrement{
+  background: transparent;
+}
+label {
+  line-height: 1.3em;
+  color: #000;
+  pointer-events: none;
+  font-size: 1em;
+}
+
+.buttons-container {
+    display: flex;
+}
+button {
+    flex-basis: 50%;
+    padding: 1em 0;
+    font-size: inherit;
+    background-color: var(--color-of-buttons);
+    color: #fff;
+    letter-spacing: 0.05em;
+    transition: background-color 0.2s;
+}
+
+
+.left-one {
+  border-bottom-left-radius: 1em;
+}
+.right-one {
+  border-bottom-right-radius: 1em;
+}
+
+
+.correct{
+  color: green;
+  background-color: rgba(0, 128, 0, 0.1);
+}
+.incorrect{
+  color: red;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+.active{
+  color: var(--color-of-buttons);
+}
+.info {
+  color: white;
+  margin: 1em;
+}
+.timer {
+  font-size: 1.75em;
+}
+.characters {
+  font-size: 1em;
+  margin-top: 0.5em;
+}
+
+
+@media (max-width: 1024px) {
+  body{
+    font-size: 1em;
+  }
+}
+@media (min-width: 768px) {
+  button:hover {
+    background-color: var(--color-of-hover);
+  }
+}
+@media (max-width: 768px) {
+  .container{
+    width: 80vw;
+  }
+}
+@media (max-width: 586px) {
+  .buttons-container {
+    flex-direction: column;
+  }
+  button {
+    flex-basis: 100%;
+  }
+  .left-one {
+    border-bottom-left-radius: 0;
+  }
+  .right-one {
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+  }
+}
+
