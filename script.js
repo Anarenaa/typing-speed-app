@@ -120,3 +120,7 @@ document.querySelector('.restart').addEventListener('click', ()=> {
     textarea.focus();
     setActiveCharacter(0);
 });
+
+textarea.addEventListener("click", function() {
+    this.focus();
+});
