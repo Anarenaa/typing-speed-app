@@ -133,6 +133,7 @@ button {
   }
   .left-one {
     border-bottom-left-radius: 0;
+    border-bottom: #2c2c2c7a;
   }
   .right-one {
     border-bottom-right-radius: 1em;

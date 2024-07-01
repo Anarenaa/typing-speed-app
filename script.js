@@ -93,7 +93,8 @@ async function renderNewQuote() {
     resetTimer();
     setActiveCharacter(0);
     numberCharacters.innerText = `${quote.length} symbols`;
-    localStorage.setItem('quote', quote)
+    localStorage.setItem('quote', quote);
+    textarea.focus();
 }
 
 function resetClasses() {
