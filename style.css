@@ -1,16 +1,16 @@
 :root{
-  --color-of-background: #3a1f38;
+  --color-of-background: hsl(304, 30%, 17%);
   --color-of-buttons: hsl(304, 30%, 50%);
   --color-of-hover: hsl(304, 30%, 40%);
 }
 
 body{
     background-color: var(--color-of-background);
-    font-size: 1.125em;
+    font-size: 1.2em;
     font-family: 'Courier New', Courier, monospace;
 }
 
-.container {
+.main {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -26,7 +26,6 @@ textarea {
   width: 100%;
   height: 100%;
   padding: 1.125em;
-  color: transparent;
   resize: none;
   line-height: 1.3em;
   font-size: 1em;
@@ -56,7 +55,7 @@ textarea {
 .label-container::-webkit-scrollbar-button:decrement{
   background: transparent;
 }
-label {
+label#placeholder {
   line-height: 1.3em;
   color: #000;
   pointer-events: none;
@@ -66,7 +65,7 @@ label {
 .buttons-container {
     display: flex;
 }
-button {
+main button {
     flex-basis: 50%;
     padding: 1em 0;
     font-size: inherit;
@@ -77,10 +76,10 @@ button {
 }
 
 
-.left-one {
+button.left-one {
   border-bottom-left-radius: 1em;
 }
-.right-one {
+button.right-one {
   border-bottom-right-radius: 1em;
 }
 
@@ -96,9 +95,14 @@ button {
 .active{
   color: var(--color-of-buttons);
 }
+
+
 .info {
   color: white;
   margin: 1em;
+  position: absolute;
+  left: 0;
+  top:0;
 }
 .timer {
   font-size: 1.75em;
@@ -109,9 +113,64 @@ button {
 }
 
 
+/*settings*/
+.settings {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: white;
+  margin: 1em;
+  margin-right: 2.5em;
+  font-size: 1.25em;
+}
+input#language-toggle {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.settings label{
+  position: relative;
+  display: inline-block;
+  width: 3.25em;
+  height: 1.5em;
+  background-color: rgb(128, 128, 128);
+  border-radius: 6.25em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.settings label:after{
+  content: "";
+  position: absolute;
+  width: 1.275em;
+  height: 1.275em;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+  transition: 0.3s;
+}
+#language-toggle:checked + label:after{
+  left: 1.85em;
+}
+
+
+span.left-one, span.right-one {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+span.left-one{
+  left: -1.5em;
+}
+span.right-one {
+  right: -1.5em;
+}
+
 @media (max-width: 1024px) {
   body{
-    font-size: 1em;
+    font-size: 1.1em;
   }
 }
 @media (min-width: 768px) {
@@ -120,7 +179,7 @@ button {
   }
 }
 @media (max-width: 768px) {
-  .container{
+  .main{
     width: 80vw;
   }
 }
@@ -131,13 +190,12 @@ button {
   button {
     flex-basis: 100%;
   }
-  .left-one {
+  button.left-one {
     border-bottom-left-radius: 0;
-    border-bottom: 1px solid #2c2c2c7a;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
   }
-  .right-one {
+  button.right-one {
     border-bottom-right-radius: 1em;
     border-bottom-left-radius: 1em;
   }
 }
-

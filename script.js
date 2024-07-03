@@ -1,6 +1,7 @@
 const placeholder = document.getElementById('placeholder');
 const textarea = document.getElementById('textarea');
 const numberCharacters= document.querySelector('.characters');
+const toggleButton = document.querySelector('#language-toggle');
 
 const API_URL = "https://api.quotable.io/random";
 
@@ -80,21 +81,43 @@ async function getRandomQuote() {
         console.error('Error fetching quote:', error);
     }
 }
+    
+async function getRandomQuoteUA() {
+    try {
+        const originalQuote = await getRandomQuote();
+        const API_TRANSLATE_URL = `https://api.mymemory.translated.net/get?q=${originalQuote}&langpair=en|uk&de=mika.akima.22@gmail.com`;
+        const response = await fetch(API_TRANSLATE_URL);
+        const data = await response.json();
+        return data.responseData.translatedText;
+        
+    } catch (error) {
+        console.error('Error fetching quote:', error);
+    }
+}
 
 async function renderNewQuote() {
-    const quote = await getRandomQuote();
+
     placeholder.innerHTML = '';
     textarea.value = '';
+    resetTimer();
+
+    let quote;
+    if (toggleButton.checked) {
+        quote = await getRandomQuoteUA();
+    } else {
+        quote = await getRandomQuote();
+    }
+
     quote.split('').forEach(element => {
         const character = document.createElement('span');
         character.innerText = element;
         placeholder.appendChild(character);
     });
-    resetTimer();
-    setActiveCharacter(0);
     numberCharacters.innerText = `${quote.length} symbols`;
-    localStorage.setItem('quote', quote);
+    setActiveCharacter(0);
     textarea.focus();
+    localStorage.setItem('quote', quote);
+    localStorage.setItem('toggleState', toggleButton.checked);
 }
 
 function resetClasses() {
@@ -104,7 +127,18 @@ function resetClasses() {
     });
 }
 
-renderNewQuote();
+toggleButton.addEventListener('change', () => {
+    localStorage.setItem('languageToggle', toggleButton.checked);
+    renderNewQuote();
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLanguage = localStorage.getItem('languageToggle');
+    if (savedLanguage !== null) {
+        toggleButton.checked = JSON.parse(savedLanguage);
+    }
+    renderNewQuote();
+});
+
 document.querySelector('.new').addEventListener('click', 
 renderNewQuote);
 document.body.addEventListener('keydown', (e) => {
