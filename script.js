@@ -143,6 +143,7 @@ document.querySelector('.new').addEventListener('click',
 renderNewQuote);
 document.body.addEventListener('keydown', (e) => {
     if (e.key === 'Enter'){
+        e.preventDefault();
         renderNewQuote();
     }
 })
