@@ -60,7 +60,7 @@ textarea.addEventListener('input', () => {
             character.classList.remove('correct');
         }
     })
-
+    
     setActiveCharacter(inputArray.length);
 
     if (inputArray.length >= textArray.length) {
@@ -115,9 +115,9 @@ async function renderNewQuote() {
     });
     numberCharacters.innerText = `${quote.length} symbols`;
     setActiveCharacter(0);
-    textarea.focus();
     localStorage.setItem('quote', quote);
     localStorage.setItem('toggleState', toggleButton.checked);
+    textarea.focus();
 }
 
 function resetClasses() {
@@ -151,10 +151,6 @@ document.querySelector('.restart').addEventListener('click', ()=> {
     textarea.value = '';
     resetClasses();
     resetTimer();
-    textarea.focus();
     setActiveCharacter(0);
-});
-
-textarea.addEventListener("click", function() {
-    this.focus();
+    textarea.focus();
 });

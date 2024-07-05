@@ -17,8 +17,8 @@ body{
   transform: translate(-50%,-50%);
   width: 60vw; 
   height: 50vh;
-  border-radius: 1em;
-  box-shadow: 0px 0px 2em rgba(61, 61, 61, 0.4);
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
   border: 0.125em solid #2c2c2c;
 }
 
@@ -29,9 +29,13 @@ textarea {
   resize: none;
   line-height: 1.3em;
   font-size: 1em;
+  color: transparent;
+  caret-color: #000;
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  user-select: none;
+}
+textarea:focus {
+  box-shadow: 0px 0px 2em rgba(190, 190, 190, 0.5);
 }
 .label-container {
   width: 100%;
@@ -41,7 +45,6 @@ textarea {
   top: 0;
   left: 0;
   padding: 1.125em;
-  scroll-behavior: smooth;
 }
 .label-container::-webkit-scrollbar {
   width: 6px;
@@ -58,21 +61,21 @@ textarea {
 label#placeholder {
   line-height: 1.3em;
   color: #000;
-  pointer-events: none;
   font-size: 1em;
+  cursor: text;
 }
 
 .buttons-container {
-    display: flex;
+  display: flex;
 }
 main button {
-    flex-basis: 50%;
-    padding: 1em 0;
-    font-size: inherit;
-    background-color: var(--color-of-buttons);
-    color: #fff;
-    letter-spacing: 0.05em;
-    transition: background-color 0.2s;
+  flex-basis: 50%;
+  padding: 1em 0;
+  font-size: inherit;
+  background-color: var(--color-of-buttons);
+  color: #fff;
+  letter-spacing: 0.05em;
+  transition: background-color 0.2s;
 }
 
 
@@ -83,7 +86,7 @@ button.right-one {
   border-bottom-right-radius: 1em;
 }
 
-
+/*states*/
 .correct{
   color: green;
   background-color: rgba(0, 128, 0, 0.1);
@@ -153,13 +156,10 @@ input#language-toggle {
 #language-toggle:checked + label:after{
   left: 1.85em;
 }
-
-
 span.left-one, span.right-one {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-
 }
 span.left-one{
   left: -1.5em;
@@ -167,6 +167,7 @@ span.left-one{
 span.right-one {
   right: -1.5em;
 }
+
 
 @media (max-width: 1024px) {
   body{
@@ -192,7 +193,7 @@ span.right-one {
   }
   button.left-one {
     border-bottom-left-radius: 0;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    border-bottom: 1px solid var(--color-of-hover);
   }
   button.right-one {
     border-bottom-right-radius: 1em;
