@@ -3,7 +3,7 @@ const textarea = document.getElementById('textarea');
 const numberCharacters= document.querySelector('.characters');
 const toggleButton = document.querySelector('#language-toggle');
 
-const API_URL = "https://api.quotable.io/random";
+const API_URL = "https://api.adviceslip.com/advice";
 
 //timer
 const timerElement = document.querySelector('.timer');
@@ -74,7 +74,7 @@ async function getRandomQuote() {
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
-        const textQuote = data.content;
+        const textQuote = data.slip.advice;
         return textQuote;
         
     } catch (error) {
